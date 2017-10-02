@@ -1,1 +1,2 @@
-# docker-elixir1.5-phantomjs
+# docker-elixir1.5-chromedriver
+# elixir1.5-chromedriver

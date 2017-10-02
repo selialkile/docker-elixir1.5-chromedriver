@@ -1,0 +1,18 @@
+image: selialkile/elixir1.5-chromedriver
+
+before_script:
+  - Xvfb :99 -shmem -screen 0 1366x768x16 &
+  - /usr/lib/chromium/chromedriver --port=4444 --whitelisted-ips="" &
+  - mix local.hex --force
+  - mix local.rebar --force
+  - mix deps.get
+
+mix_tests:
+  script:
+    - time mix test --max-cases=2 #chrome nao aguenta mais que isso...
+
+variables:
+  WEBDRIVER: chrome_driver
+  WEBDRIVER_HOST: http://localhost
+  WEBDRIVER_PORT: "4444"
+  DISPLAY: ":99"
